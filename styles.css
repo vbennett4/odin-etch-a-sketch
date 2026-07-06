@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.square {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    /* flex property defined in script.js as "0 0 calc(100% / gridSize)" */
+    aspect-ratio: 1 / 1;
+}
