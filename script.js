@@ -31,10 +31,23 @@ function hoverEffect() {
     const squaresArr = Array.from(squares);
 
     squaresArr.forEach(square => {
-        square.addEventListener("mousemove", (event) => {
-            square.style.backgroundColor = "black";
+        square.addEventListener("mouseenter", (event) => {
+            square.style.backgroundColor = randomizeColors();
         })
     })
+}
+
+//Randomize the colors of the squares
+
+function randomizeColors() {
+    const hexCharacters = "0123456789ABCDEF";
+    let color = "#";
+
+    for (let i = 0; i < 6; i++) {
+        color += hexCharacters[Math.floor(Math.random() * 16)];
+    }
+    
+    return color;
 }
 
 //Add Grid Size Button that prompts user for grid size
