@@ -32,6 +32,9 @@ function hoverEffect() {
 
     squaresArr.forEach(square => {
         square.addEventListener("mouseenter", (event) => {
+            let currentOpacity = parseFloat(square.style.opacity) || 0;
+            square.style.opacity = currentOpacity + 0.1;
+            
             square.style.backgroundColor = randomizeColors();
         })
     })
@@ -82,6 +85,7 @@ function resetButton() {
         const resetSquaresArr = Array.from(resetSquares);
 
         resetSquaresArr.forEach(square => {
+            square.style.opacity = 0;
             square.style.backgroundColor = "white";
         })
     })
