@@ -12,6 +12,18 @@ function generateGrid(gridSize) {
     }
 }
 
+//Remove old grid before generating new grid
+
+function removeGrid() {
+    const parentNode = document.querySelector(".container");
+    const childNodes = document.querySelectorAll(".square");
+    const childNodesArr = Array.from(childNodes);
+
+    childNodesArr.forEach(child => {
+        parentNode.removeChild(child);
+    })
+}
+
 //Add hover-effect to squares
 
 function hoverEffect() {
@@ -32,12 +44,12 @@ function gridSizeButton() {
 
     sizeBtn.addEventListener("click", () => {
         let answer = +prompt("Please enter the size you would like your grid. The size can be no greater than 100.");
-
+        console.log(answer);
         if (answer > 0 && answer <= 100) {
-
+            removeGrid();
             generateGrid(answer); 
         } else {
-            while (answer < 0 || answer > 100) {
+            while (answer < 0 || answer > 100 || Number.isNaN(answer)) {
                 answer = +prompt("Invalid input! Please enter a number between 1 and 100.");
             }
             generateGrid(answer);
