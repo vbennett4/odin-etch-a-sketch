@@ -1,9 +1,7 @@
 //Generate grid of squares
 
-function generateGrid() {
+function generateGrid(gridSize) {
     const parentNode = document.querySelector(".container");
-    const gridSize = 16;
-
 
     for (let i = 0; i < (gridSize ** 2); i++) {
         const childNode = document.createElement("div");
@@ -27,8 +25,42 @@ function hoverEffect() {
     })
 }
 
+//Add Grid Size Button that prompts user for grid size
 
+function gridSizeButton() {
+    const sizeBtn = document.querySelector("#size");
 
+    sizeBtn.addEventListener("click", () => {
+        let answer = +prompt("Please enter the size you would like your grid. The size can be no greater than 100.");
 
-generateGrid();
-hoverEffect();
+        if (answer > 0 && answer <= 100) {
+
+            generateGrid(answer); 
+        } else {
+            while (answer < 0 || answer > 100) {
+                answer = +prompt("Invalid input! Please enter a number between 1 and 100.");
+            }
+            generateGrid(answer);
+        }
+    
+    hoverEffect();
+    })
+}
+
+// Add Reset Button that erases the grid
+
+function resetButton() {
+    const resetBtn = document.querySelector("#reset");
+
+    resetBtn.addEventListener("click", () => {
+        const resetSquares = document.querySelectorAll(".square");
+        const resetSquaresArr = Array.from(resetSquares);
+
+        resetSquaresArr.forEach(square => {
+            square.style.backgroundColor = "white";
+        })
+    })
+}
+
+gridSizeButton();
+resetButton();
