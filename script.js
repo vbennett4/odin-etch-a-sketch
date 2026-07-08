@@ -1,6 +1,6 @@
 //Generate grid of squares
 
-function grid() {
+function generateGrid() {
     const parentNode = document.querySelector(".container");
     const gridSize = 16;
 
@@ -14,4 +14,21 @@ function grid() {
     }
 }
 
-grid();
+//Add hover-effect to squares
+
+function hoverEffect() {
+    const squares = document.querySelectorAll(".square");
+    const squaresArr = Array.from(squares);
+
+    squaresArr.forEach(square => {
+        square.addEventListener("mousemove", (event) => {
+            square.style.backgroundColor = "black";
+        })
+    })
+}
+
+
+
+
+generateGrid();
+hoverEffect();
